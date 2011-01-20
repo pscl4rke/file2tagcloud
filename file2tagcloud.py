@@ -8,10 +8,20 @@
 import sys
 
 
+def is_wrapped(word):
+    return word.startswith('[') and word.endswith(']')
+
+
 def parse_line(line):
-    name, wrapped = line.rsplit(None, 1)
-    url = wrapped[1:-1]
-    return (name, url)
+    words = line.split()
+    url = words[-1][1:-1]
+    if is_wrapped(words[-2]):
+        level = int(words[-2][1:-1])
+        name = " ".join(words[:-2])
+    else:
+        level = 3
+        name = " ".join(words[:-1])
+    return (name, level, url)
 
 
 def load_tags(filehandle):
@@ -21,8 +31,8 @@ def load_tags(filehandle):
 
 
 def display_tag(tag):
-    name, url = tag
-    output = '<a href="%s">%s</a>' % (url, name)
+    name, level, url = tag
+    output = '<a class="tag-level-%i" href="%s">%s</a>' % (level, url, name)
     return output
 
 
@@ -32,8 +42,10 @@ def main():
     else:
         filehandle = open(sys.argv[1])
     tags = list(load_tags(filehandle))
+    print '<div class="tag-cloud">'
     for tag in tags:
         print display_tag(tag)
+    print '</div>'
 
 
 if __name__ == '__main__':

@@ -1,0 +1,20 @@
+
+.tag-cloud {
+  margin-left: 50px;
+  margin-right: 50px;
+  text-align: center;
+}
+
+.tag-cloud a {
+  padding-left: 5px;
+  padding-right: 5px;
+  white-space: nowrap;
+}
+
+.tag-level-1 { font-size: 60%; }
+.tag-level-2 { font-size: 80%; }
+.tag-level-3 { font-size: 100%; }
+.tag-level-4 { font-size: 120%; }
+.tag-level-5 { font-size: 140%; }
+
+
