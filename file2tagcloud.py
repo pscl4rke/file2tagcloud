@@ -1,7 +1,16 @@
 #!/usr/bin/env python
+#======================================================================#
+                                                         #$  <BEGIN>  $#
 
 
 """
+//  TAG CLOUD GENERATOR
+
+(c)  2011  P. S. Clarke
+
+See the README distributed with this script or visit
+https://github.com/pscl4rke/file2tagcloud
+for more information.
 """
 
 
@@ -52,3 +61,5 @@ if __name__ == '__main__':
     main()
 
 
+#======================================================================#
+                                                           #$  <END>  $#
