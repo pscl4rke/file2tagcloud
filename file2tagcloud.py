@@ -4,7 +4,8 @@
 """
 """
 
-FILE = "example.tag"
+
+import sys
 
 
 def parse_line(line):
@@ -13,9 +14,8 @@ def parse_line(line):
     return (name, url)
 
 
-def load_tags(filename):
-    f = open(filename)
-    for line in f:
+def load_tags(filehandle):
+    for line in filehandle:
         tag = parse_line(line)
         yield tag
 
@@ -27,8 +27,11 @@ def display_tag(tag):
 
 
 def main():
-    filename = FILE
-    tags = list(load_tags(filename))
+    if len(sys.argv) == 1:
+        filehandle = sys.stdin
+    else:
+        filehandle = open(sys.argv[1])
+    tags = list(load_tags(filehandle))
     for tag in tags:
         print display_tag(tag)
 
